@@ -3,7 +3,7 @@ package practice;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Array6 {
+public class Array06 {
 	
 		public boolean isPrime(int num) {
 			if(num == 1) return false;
