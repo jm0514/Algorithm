@@ -41,7 +41,7 @@ public class Array06 {
 		
 
 		public static void main(String[] args){
-			Array06 T = new Array06();
+			Array6 T = new Array6();
 			Scanner kb = new Scanner(System.in);
 			
 			int n = kb.nextInt();
