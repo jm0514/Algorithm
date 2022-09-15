@@ -3,8 +3,8 @@ import java.util.*;
 
 public class Infl405 {
 	public int solution(int n, int m, int arr[]) {
-		int answer = 0;
-		//³»¸²Â÷¼ø(Collections.reverseOrder()°¡ ¾øÀ¸¸é ¿À¸§Â÷¼ø)
+		int answer = -1;
+		//ë‚´ë¦¼ì°¨ìˆœ(Collections.reverseOrder()ê°€ ì—†ìœ¼ë©´ ì˜¤ë¦„ì°¨ìˆœ)
 		TreeSet<Integer> ts = new TreeSet<>(Collections.reverseOrder());
 		
 		for(int i =0; i<n; i++) {
