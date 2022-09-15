@@ -10,14 +10,13 @@ public class Infl501 {
 				stack.push(x);
 			}else {
 				if(stack.isEmpty()) {
-					answer = "NO";
+					return "NO";
 				}
 				stack.pop();
 			}
-			
 		}
 		if(!stack.isEmpty()) {
-			answer = "NO";
+			return  "NO";
 		}
 		
 		return answer;
