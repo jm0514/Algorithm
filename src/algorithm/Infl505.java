@@ -12,7 +12,7 @@ public class Infl505 {
 			}else {
 				stack.pop();
 				if(str.charAt(i-1) == '(') {
-					answer += stack.size();
+					answer += stack.size(); //쌓여있는 '('의 개수만큼 answer가 증가함
 				}else {
 					answer++;
 				}
