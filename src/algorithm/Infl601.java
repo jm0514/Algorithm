@@ -6,15 +6,14 @@ public class Infl601{
 	public int[] solution(int n, int arr[]) {
 		
 		for(int i = 0; i<n-1; i++) {
-			int s = i;
+			int min_index = i;
 			for(int j = i+1; j<n; j++) {
-				int tmp;
-				if(arr[s]>arr[j]) {
-					s = j;
+				if(arr[min_index]>arr[j]) {
+					min_index = j;
 				}
-				tmp = arr[i];
-				arr[i] = arr[s];
-				arr[s] = tmp;
+				int tmp = arr[i];
+				arr[i] = arr[min_index];
+				arr[min_index] = tmp;
 			}
 		}
 		
