@@ -3,9 +3,9 @@ import java.util.*;
 
 	public class Infl803{
 		
-		static int answer = Integer.MIN_VALUE, n, m;
-		boolean flag =false;
-		
+		static int answer = Integer.MIN_VALUE;
+		static int n,m =0;
+	
 		public void DFS(int Layer, int scoreSum, int timeSum, int Qscore[], int Qtime[]) {
 			if( m < timeSum ) return;
 		
