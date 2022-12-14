@@ -1,61 +1,57 @@
 package algorithm;
 import java.util.*;
 
-	class Infl815{
-		
-		static int answer = 0, n;
-		static int board[][];
-		static int dx[] = {-1, -1, 0, 1, 1, 1, 0, -1};
-		static int dy[] = {0, 1, 1, 1, 0, -1, -1, -1};
-		Queue<Point> Q = new LinkedList<>();
-		
-		class Point{
-			public int x,y;
-			Point(int x, int y){
-				this.x = x;
-				this.y = y;
-			}
-		}
-		
-		public void BFS(int x, int y, int board[][]) {
-			Q.offer(new Point(x, y));
-			while(!Q.isEmpty()) {
-			Point tmp = Q.poll();
-			for(int i = 0; i< 8; i++) {
-				int nx = dx[i] + tmp.x;
-				int ny = dy[i] + tmp.y;
-				if(nx >= 0 && nx < n && ny >= 0 && ny <n && board[nx][ny] ==1) {
-					board[nx][ny] = 0;
-					Q.offer(new Point(nx, ny));
-				}
-			}
-			}
-		}
-		
-		public void solution(int board[][]) {
-			for(int i = 0; i < n; i++) {
-				for(int j = 0; j < n ; j++) {
-					if(board[i][j]==1) {
-						answer++;
-						board[i][j]=0;
-						BFS(i, j, board);
-					}
-				}
-			}
-		}
 
-		public static void main(String[] args){
-			Infl815 T = new Infl815();
-			Scanner kb = new Scanner(System.in);
-			n=kb.nextInt();
-			int[][] arr=new int[n][n];
-			for(int i=0; i<n; i++){
-				for(int j=0; j<n; j++){
-					arr[i][j]=kb.nextInt();
-				}
-			}
-			T.solution(arr);
-			System.out.println(answer);
+class Infl815 {
+	static class Point{
+		public int x, y;
+		Point(int x, int y){
+			this.x=x;
+			this.y=y;
 		}
+	}
+	
+	static int n, m, len, answer=Integer.MAX_VALUE;
+	static int[] combi;
+	static ArrayList<Point> home, pizza;
+	public void DFS(int L, int s){
+		if(L==m){
+			int sum=0;
+			for(Point h : home){
+				int dis=Integer.MAX_VALUE;
+				for(int i : combi){
+					dis=Math.min(dis, Math.abs(h.x-pizza.get(i).x)+Math.abs(h.y-pizza.get(i).y));
+				}
+				sum+=dis;
+			}
+			answer=Math.min(answer, sum);
+		}
+		else{ // 조합생성(암기하자!)
+			for(int i=s; i<len; i++){
+				combi[L]=i;
+				DFS(L+1, i+1);
+			}
+		}
+	}
+
+	public static void main(String[] args){
+		Infl815 T = new Infl815();
+		Scanner kb = new Scanner(System.in);
+		n=kb.nextInt();
+		m=kb.nextInt();
+		pizza=new ArrayList<>();
+		home=new ArrayList<>();
+		for(int i=0; i<n; i++){
+			for(int j=0; j<n; j++){
+				int tmp=kb.nextInt();
+				if(tmp==1) home.add(new Point(i, j));
+				else if(tmp==2) pizza.add(new Point(i, j));
+			}
+		}
+		len=pizza.size();
+		combi=new int[m];
+		T.DFS(0, 0);
+		System.out.println(answer);
+	}
 }
 
